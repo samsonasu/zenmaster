@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "Zen(desk) Master",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mobiledoorman.zendesk.com/agent/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "onpage.js"
+  ],
+  "background": {
+      "scripts": [ "background.js" ],
+      "persistent": true
+  },
+  "permissions": [
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "tabs",
+    "<all_urls>"
+  ]
+}

@@ -5,7 +5,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://mobiledoorman.zendesk.com/agent/*"
+        "https://*.zendesk.com/agent/*"
       ],
       "js": [
         "content.js"

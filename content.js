@@ -14,24 +14,14 @@ function injectScript(file_path, tag) {
 }
 injectScript(chrome.extension.getURL('onpage.js'), 'body');
 
-// // Find the right tab
-// setTimeout(function() {
-//     //Page context
-//     alert("FIRE")
-//     var message = {test: "blah"};
-//     var event = new CustomEvent("zmOpenTicket", {detail: message});
-//     window.dispatchEvent(event);
-// }, 5000);
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.openTicket) {
-            var event = new CustomEvent("zmOpenTicket", {
-                detail: {
-                    ticketId: request.openTicket
-                }
-            });
-            window.dispatchEvent(event);
-        }
+function onMessageReceived(request, sender, sendResponse) {
+    if (request.openTicket) {
+        var event = new CustomEvent("zmOpenTicket", {
+            detail: {
+                ticketId: request.openTicket
+            }
+        });
+        window.dispatchEvent(event);
     }
-);
+}
+chrome.runtime.onMessage.addListener(onMessageReceived);
